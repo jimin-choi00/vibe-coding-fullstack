@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'VibeApp | ' + post.title}">VibeApp | Post Detail</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: #101322;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+        }
+
+        .post-content {
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body class="p-10">
+    <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+            <a href="/posts"
+                class="inline-flex items-center text-sm font-bold text-slate-400 hover:text-white transition-colors group">
+                <svg class="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to List
+            </a>
+        </div>
+
+        <article class="glass rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+            <!-- Decorative gradient -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+            <header class="mb-10 relative z-10">
+                <div class="flex items-center gap-4 mb-6">
+                    <span
+                        class="px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-400 text-xs font-black uppercase tracking-widest border border-blue-500/30">
+                        Post #<span th:text="${post.no}">1</span>
+                    </span>
+                    <span class="text-slate-500 text-sm font-mono flex items-center">
+                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        <span th:text="${post.views}">42</span> views
+                    </span>
+                </div>
+
+                <h1 class="text-5xl font-black tracking-tight text-white mb-6 leading-tight" th:text="${post.title}">
+                    Post Title
+                </h1>
+
+                <div class="flex items-center gap-6 text-sm text-slate-400 font-medium">
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Created: <span class="ml-1 text-slate-300"
+                            th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">2024-02-23</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        Updated: <span class="ml-1 text-slate-300"
+                            th:text="${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}">2024-02-23</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="h-px w-full bg-gradient-to-r from-white/10 via-white/5 to-transparent mb-10"></div>
+
+            <div class="post-content text-lg" th:text="${post.content}">
+                Post content goes here...
+            </div>
+
+            <div class="mt-16 pt-10 border-t border-white/5 flex justify-end">
+                <a href="/posts"
+                    class="px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 font-bold transition-all hover:scale-[1.02] active:scale-[0.98]">
+                    List View
+                </a>
+            </div>
+        </article>
+    </div>
+</body>
+
+</html>

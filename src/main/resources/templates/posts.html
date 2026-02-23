@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VibeApp | Posts</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <style>
+        . glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: #101322;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="p-10">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex items-center justify-between mb-12">
+            <div>
+                <h1
+                    class="text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                    Post List</h1>
+                <p class="text-slate-400 mt-2">Explore the vibe shared by our community.</p>
+            </div>
+            <a href="/" class="text-sm font-bold text-slate-400 hover:text-white transition-colors">Back to Home</a>
+        </div>
+
+        <div class="glass rounded-3xl overflow-hidden shadow-2xl">
+            <table class="w-full text-left">
+                <thead
+                    class="bg-white/5 border-b border-white/10 uppercase text-xs font-black tracking-widest text-slate-400">
+                    <tr>
+                        <th class="px-8 py-6">No.</th>
+                        <th class="px-8 py-6">Title</th>
+                        <th class="px-8 py-6">Created At</th>
+                        <th class="px-8 py-6 text-right">Views</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                    <tr th:each="post : ${posts}" class="hover:bg-white/5 transition-colors">
+                        <td class="px-8 py-6 font-mono text-sm text-blue-400" th:text="${post.no}">1</td>
+                        <td class="px-8 py-6 font-bold">
+                            <a th:href="@{/posts/{no}(no=${post.no})}" th:text="${post.title}"
+                                class="hover:text-blue-400 transition-colors">Post Title</a>
+                        </td>
+                        <td class="px-8 py-6 text-sm text-slate-400"
+                            th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}">2024-02-23</td>
+                        <td class="px-8 py-6 text-right font-mono text-cyan-400" th:text="${post.views}">42</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
