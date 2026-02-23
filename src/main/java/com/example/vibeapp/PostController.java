@@ -29,4 +29,15 @@ public class PostController {
         }
         return "redirect:/posts";
     }
+
+    @GetMapping("/posts/new")
+    public String newForm() {
+        return "post_new_form";
+    }
+
+    @org.springframework.web.bind.annotation.PostMapping("/posts/add")
+    public String add(String title, String content) {
+        postService.createPost(title, content);
+        return "redirect:/posts";
+    }
 }

@@ -20,6 +20,17 @@ public class PostRepository {
         return new ArrayList<>(posts);
     }
 
+    public void save(Post post) {
+        if (post.getNo() == null) {
+            long maxNo = posts.stream()
+                    .mapToLong(Post::getNo)
+                    .max()
+                    .orElse(0L);
+            post.setNo(maxNo + 1);
+            posts.add(post);
+        }
+    }
+
     public Post findByNo(Long no) {
         return posts.stream()
                 .filter(post -> post.getNo().equals(no))

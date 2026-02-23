@@ -18,4 +18,9 @@ public class PostService {
     public Post getPostByNo(Long no) {
         return postRepository.findByNo(no);
     }
+
+    public void createPost(String title, String content) {
+        Post post = new Post(title, content);
+        postRepository.save(post);
+    }
 }

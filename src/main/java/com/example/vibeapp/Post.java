@@ -10,6 +10,17 @@ public class Post {
     private LocalDateTime updatedAt;
     private Integer views;
 
+    public Post() {
+    }
+
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = null;
+        this.views = 0;
+    }
+
     public Post(Long no, String title, String content, LocalDateTime createdAt, Integer views) {
         this.no = no;
         this.title = title;
