@@ -1,0 +1,14 @@
+.gradle
+build/
+bin/
+out/
+.idea
+.vscode
+*.iml
+*.iws
+*.ipr
+.DS_Store
+*.swp
+*.bak
+application-*.yml
+application-*.properties

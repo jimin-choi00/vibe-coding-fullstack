@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | Home</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(19, 55, 236, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                linear-gradient(135deg, #f6f6f8 0%, #e2e8f0 100%);
+        }
+
+        .code-glow {
+            text-shadow: 0 0 10px rgba(19, 55, 236, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined !text-xl">auto_awesome</span>
+                </div>
+                <h2 class="text-xl font-black tracking-tight text-primary dark:text-white">VIBE CODING</h2>
+            </div>
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Courses</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Community</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Showcase</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button
+                    class="hidden sm:block text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">Log
+                    In</button>
+                <button
+                    class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 overflow-hidden hero-gradient">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-bold mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    NEW: CREATIVE GLSL MASTERCLASS
+                </div>
+                <h1
+                    class="text-6xl md:text-8xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-slate-800 to-primary dark:from-white dark:to-primary/50">
+                    Code Your Vibe.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mb-12 leading-relaxed"
+                    th:text="${message}">
+                    The creative coding platform where logic meets art. Elevate your craft with our unique fusion of
+                    technology and design.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-20">
+                    <button
+                        class="px-8 py-4 bg-primary text-white rounded-xl text-lg font-bold shadow-xl shadow-primary/30 flex items-center gap-2">
+                        Join the Movement <span class="material-symbols-outlined">trending_flat</span>
+                    </button>
+                    <button
+                        class="px-8 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-lg font-bold hover:bg-slate-50 transition-colors">
+                        View Curriculum
+                    </button>
+                </div>
+                <!-- IDE Visual -->
+                <div class="relative w-full max-w-5xl mx-auto">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-primary via-purple-500 to-cyan-500 rounded-xl blur-2xl opacity-20">
+                    </div>
+                    <div class="relative glass rounded-xl shadow-2xl overflow-hidden border border-white/40">
+                        <!-- IDE Header -->
+                        <div
+                            class="bg-white/50 dark:bg-slate-900/50 border-b border-white/20 px-4 py-3 flex items-center justify-between">
+                            <div class="flex gap-1.5">
+                                <div class="size-3 rounded-full bg-red-400"></div>
+                                <div class="size-3 rounded-full bg-amber-400"></div>
+                                <div class="size-3 rounded-full bg-emerald-400"></div>
+                            </div>
+                            <div class="text-[10px] font-mono text-slate-400 font-medium">VibeEditor — main.js</div>
+                            <div class="w-10"></div>
+                        </div>
+                        <!-- IDE Body -->
+                        <div class="grid grid-cols-12 h-[450px]">
+                            <div
+                                class="col-span-1 border-r border-white/20 flex flex-col items-center py-4 gap-4 text-slate-400">
+                                <span class="material-symbols-outlined !text-xl">description</span>
+                                <span class="material-symbols-outlined !text-xl opacity-50">search</span>
+                                <span class="material-symbols-outlined !text-xl opacity-50">account_tree</span>
+                                <span class="material-symbols-outlined !text-xl opacity-50">extension</span>
+                            </div>
+                            <div class="col-span-11 bg-slate-950 p-8 font-mono text-sm overflow-hidden flex flex-col">
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">01</span>
+                                    <span class="text-purple-400">import</span> <span class="text-slate-300">{ Canvas,
+                                        VibeLoop }</span> <span class="text-purple-400">from</span> <span
+                                        class="text-emerald-400">'@vibe-coding/core'</span><span
+                                        class="text-slate-300">;</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">02</span>
+                                    <span class="text-slate-600">// Initialize your creative environment</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">03</span>
+                                    <span class="text-blue-400">const</span> <span class="text-yellow-200">vibe</span>
+                                    <span class="text-slate-300">=</span> <span class="text-purple-400">new</span> <span
+                                        class="text-cyan-300">VibeLoop</span><span class="text-slate-300">({</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">04</span>
+                                    <span class="ml-8 text-slate-300">intensity:</span> <span
+                                        class="text-orange-400">0.85</span><span class="text-slate-300">,</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">05</span>
+                                    <span class="ml-8 text-slate-300">hue:</span> <span
+                                        class="text-primary text-white bg-primary/20 px-1 rounded">'neon-blue'</span><span
+                                        class="text-slate-300">,</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">06</span>
+                                    <span class="ml-8 text-slate-300">mode:</span> <span
+                                        class="text-emerald-400">'flow-state'</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">07</span>
+                                    <span class="text-slate-300">});</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">08</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">09</span>
+                                    <span class="text-yellow-200">vibe</span><span class="text-slate-300">.</span><span
+                                        class="text-cyan-300">render</span><span class="text-slate-300">(() =&gt;
+                                        {</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">10</span>
+                                    <span class="ml-8 text-purple-400">return</span> <span
+                                        class="text-slate-300">&lt;</span><span
+                                        class="text-emerald-400">Visualizer</span> <span
+                                        class="text-orange-400">noise</span><span class="text-slate-300">={</span><span
+                                        class="text-orange-400">0.5</span><span class="text-slate-300">} /&gt;;</span>
+                                </div>
+                                <div class="flex gap-4 mb-2">
+                                    <span class="text-slate-600">11</span>
+                                    <span class="text-slate-300">});</span>
+                                </div>
+                                <div class="mt-auto pt-8 border-t border-slate-800">
+                                    <div class="flex items-center gap-6">
+                                        <div class="flex items-center gap-2">
+                                            <div class="size-12 rounded-lg overflow-hidden bg-slate-800">
+                                                <img class="w-full h-full object-cover"
+                                                    data-alt="Abstract generative noise pattern in neon blue"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkU6dF9-LMWUCAAbN9F6cRTphSuyuHtkGnKia6lZ5u6a65Ehh1D3Wum42cYj41wWZRANG2EAe5z2g6yJxHL716At1CUYrMxnmNAvWFOdr3zMoY-a08A8gY04E3o9BrDlAbExXotS9FA4jBe8TXRHL50yOtv8Wu9IF8ta0PvS7XGHhhnRBgga84J5btsSZejs0KHo3kOfTo87AaeaKY9oR_TEq0toZJB8d4UZqDihn3scHSYWjNnHgGc7FrLriEwmTtLtVqeNGJ0spm" />
+                                            </div>
+                                            <div class="text-[10px]">
+                                                <div class="text-slate-400 uppercase tracking-widest font-bold">Preview
+                                                </div>
+                                                <div class="text-white">active_composition.canvas</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 h-2 bg-slate-800 rounded-full overflow-hidden">
+                                            <div class="h-full bg-primary w-2/3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why Vibe Coding Section -->
+        <section class="py-24 bg-white dark:bg-background-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+                    <div class="max-w-xl">
+                        <h2 class="text-sm font-black text-primary uppercase tracking-[0.2em] mb-4">The Platform</h2>
+                        <h3 class="text-4xl font-black tracking-tight mb-4">Why Vibe Coding?</h3>
+                        <p class="text-slate-600 dark:text-slate-400">We've reimagined technical education for the
+                            creative era. No boring lectures, just pure creation.</p>
+                    </div>
+                    <a class="text-primary font-bold flex items-center gap-2 hover:underline" href="#">
+                        Explore all features <span class="material-symbols-outlined">north_east</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div
+                        class="group p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-all hover:shadow-2xl hover:shadow-primary/5">
+                        <div
+                            class="size-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined !text-3xl">palette</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Creative Expression</h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                            Focus on visual arts and generative design to push the boundaries of what code can do. Logic
+                            is your paintbrush.
+                        </p>
+                        <div class="aspect-video rounded-xl overflow-hidden">
+                            <img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                                data-alt="Vibrant artistic code visualization"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEwDpYQvbwvUpZ0MUQsQg5Vj7FzRzZ8sfrncE4-qNoNfQruPS-hFIXe42x6tVuChWJLNjL1mjT_zaTyT4en9W2H2OZZDwLXz_TyU7WPQ-2U4NhHEk4Tj0ji_LTfx6uBR-j6v-RxNSorPovYtqYgWFrj0kHNRFNWXzKhEXGuXrCnvyRJQ4mOaj2ygJugSpb9G1wiSi32GwWNm2OmVEAijLwQuu8BKfxYXeo4YA4Pen0hO0YwnF9oLZsy3BgUs_e0Jq3JEAdlZtVP9xQ" />
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="group p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-all hover:shadow-2xl hover:shadow-primary/5">
+                        <div
+                            class="size-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined !text-3xl">terminal</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Modern Tech Stack</h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                            Master the latest tools including React, Three.js, and GLSL with our curated, project-first
+                            curriculum.
+                        </p>
+                        <div class="aspect-video rounded-xl overflow-hidden">
+                            <img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                                data-alt="Matrix of modern technology logos"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnmg-QE9mhJJ6gFE8UpgL7WiY_wV9aqR_AqSs3t-9ykgMIxV4Utzocd1ExUjMaZvMCaIvkIP4nluTNVmEW8fXtnk-vZV7QuFfFCuKmK4bHifN6419aUhiKp5utUlX9-18zWrZwpertGGfQBkcRKdIFjFK79Nil9bS-PfzEi_g-7h67pDzjD_U95GJhryD5W2BhPka0RCZWpoP5LN8wZkQzVbGRPN5fTpVcInZEep0lwH_ue6f7tinyyIaKVVQ8IQf-JyqJh_Qb3uvU" />
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="group p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-all hover:shadow-2xl hover:shadow-primary/5">
+                        <div
+                            class="size-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined !text-3xl">hub</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Community Driven</h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                            Participate in weekly jams and peer-to-peer code reviews within a global network of creative
+                            masters.
+                        </p>
+                        <div class="aspect-video rounded-xl overflow-hidden">
+                            <img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                                data-alt="Community network of creative developers"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZZI4OdGxdDtfh2bqnG-Hd_gJz2evSp2V2tfqAuW5OvogrctmW35X2HbPgceSq2fuX0I-DHt45W_dAMlEW9Zi7TzM4QkvZ911WFIqIQ5_T3ZzYUWLKyzNMLh-ZHgdSH3XRr49Os9FhDplsRet2ix-nElppS_Wcbqf5N3qBkrM0do6mXE47Fkl0QyXkEkVA6bw1ph2e499ylSY-3nADWm4uenfvHN2JPean3F7hgBzRu_NzZ0DMdtkGlnIPJNYqIETXAuVixjA82hKL" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-24 px-6">
+            <div
+                class="max-w-5xl mx-auto glass rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl">
+                <div class="absolute -top-24 -left-24 size-64 bg-primary/20 blur-[100px] rounded-full"></div>
+                <div class="absolute -bottom-24 -right-24 size-64 bg-purple-500/20 blur-[100px] rounded-full"></div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6">Ready to build something beautiful?</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Start your journey into creative coding today and join a community of thousands of developers who
+                    code with soul.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button
+                        class="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-bold hover:scale-105 transition-transform shadow-xl shadow-primary/20">
+                        Get Started Now
+                    </button>
+                    <button
+                        class="bg-white dark:bg-slate-800 px-10 py-5 rounded-2xl text-lg font-bold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition-colors">
+                        Explore the Gallery
+                    </button>
+                </div>
+                <div class="mt-12 flex items-center justify-center gap-4">
+                    <div class="flex -space-x-3">
+                        <img class="size-10 rounded-full border-2 border-white dark:border-slate-900"
+                            data-alt="User avatar 1"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCACbGludcnJYFM5uE7w1bbiJL_pxaI2JFM2SLWvPxmh0VZ5hMfvvhV1gllxAFIsJ4OcImNLcVPkseSothUNIgn-5xwkzknJhh3ezN4VhMNS26ZM1thDY3-EqcngR8setPIBacTs9CCY8yCVlWdTyihxQnXk9Bj9JPmd5kdbqfnsc4t7Cm8bm8XC3zlNk91TLqf-55cnd8UxDEhR-heCxS-rVZqBNHj6WMZyOR9BdMWDnLz-FtHYvEwS67pdkMtl163cnF0LDrm4uWL" />
+                        <img class="size-10 rounded-full border-2 border-white dark:border-slate-900"
+                            data-alt="User avatar 2"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT8im1jiJlH63loQ2DFVGH50xYJm4xk1n8L11vIZ_qezrnL839g1Ty4esAiA5d8pQT8GKigHd_XIVG1xvOyub0lG37Zy8tHfbDcnED2qLcoE_r28O6Bs88I7zIAc60A98oCTqCvFIMd8q2DXb2-GP90f52kg63HL_r6RvKYU9D8vr4QCgXD3YS1r3cSf5Eb6BOUpJooJ-VDt-w6k-yjntlaaWmmjt21Kva_WsXHKbJbIZraRcOHAgJ6uafmMXK_MC-KjNRdBqoJK1C" />
+                        <img class="size-10 rounded-full border-2 border-white dark:border-slate-900"
+                            data-alt="User avatar 3"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvKJbGE7IvjgLMbIeaPdqOyTIAZjQC3GGmGgNApVweJau6I2o9zNDqWa9FZVifyjDRMDwuvqu0Kzfnf6m9XpYV5yw0Z_RXttiQbjG_ddQfIQdYYeuEeGnnXQJfFiQ8_cDhRPk9Utds6qESpJQ7CwivkgvR8OzrDCQ5iqd9W3hic0YinYuYg8LWtB3efOQ_E2KgJkN1JelN8-Xw3z_vwUsqVM4X932NGYWjIJk9lgxO3D2hvuRgaw2f5Wqx1YDSMzo_7aBVu0QU1Czb" />
+                        <div
+                            class="size-10 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] font-bold">
+                            +2.4k</div>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500">Joined by 2,400+ creative developers</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-900/50 py-20 px-6 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined !text-xl">auto_awesome</span>
+                        </div>
+                        <h2 class="text-xl font-black tracking-tight text-primary dark:text-white">VIBE CODING</h2>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Redefining the boundaries between technology and creativity. Learn, build, and share with a
+                        global community of artists.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Learning</h5>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">Course Catalog</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Live Workshops</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Mentorship</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Free Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Platform</h5>
+                    <ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+                        <li><a class="hover:text-primary transition-colors" href="#">Vibe Editor</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Showcase</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Community Jams</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">API Docs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Connect</h5>
+                    <div class="flex gap-4 mb-6">
+                        <a class="size-10 rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all"
+                            href="#">
+                            <svg class="size-5" fill="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="size-10 rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all"
+                            href="#">
+                            <svg class="size-5" fill="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="size-10 rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all"
+                            href="#">
+                            <svg class="size-5" fill="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.125-.094.249-.192.37-.292a.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-xs text-slate-500">Subscribe to the Vibe Letter</p>
+                    <div class="mt-4 flex gap-2">
+                        <input
+                            class="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm px-4 py-2 w-full focus:ring-primary focus:border-primary"
+                            placeholder="Your email" type="email" />
+                        <button class="bg-primary text-white p-2 rounded-lg"><span
+                                class="material-symbols-outlined !text-sm">send</span></button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+                <p>© 2024 Vibe Coding Platform. Built with logic &amp; soul.</p>
+                <div class="flex gap-8">
+                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+                    <a class="hover:text-primary transition-colors" href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
