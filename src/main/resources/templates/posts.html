@@ -158,6 +158,52 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Pagination Navigation -->
+                    <div
+                        class="flex items-center justify-between border-t border-slate-200/50 px-8 py-6 dark:border-slate-800/50 bg-slate-50/30 dark:bg-slate-900/30">
+                        <div class="flex flex-1 justify-between sm:hidden">
+                            <a th:href="@{/posts(page=${currentPage - 1})}" th:if="${currentPage > 0}"
+                                class="relative inline-flex items-center rounded-xl bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-50 transition-all dark:bg-slate-900 dark:border-slate-800 dark:text-slate-300">이전</a>
+                            <a th:href="@{/posts(page=${currentPage + 1})}" th:if="${currentPage < totalPages - 1}"
+                                class="relative ml-3 inline-flex items-center rounded-xl bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-50 transition-all dark:bg-slate-900 dark:border-slate-800 dark:text-slate-300">다음</a>
+                        </div>
+                        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                                    총 <span class="font-bold text-slate-900 dark:text-white"
+                                        th:text="${totalPosts}">10</span>개의 게시물 중
+                                    <span class="font-bold text-slate-900 dark:text-white"
+                                        th:text="${currentPage + 1}">1</span> /
+                                    <span class="font-bold text-slate-900 dark:text-white"
+                                        th:text="${totalPages}">2</span> 페이지
+                                </p>
+                            </div>
+                            <div>
+                                <nav class="isolate inline-flex -space-x-px rounded-xl shadow-sm gap-2"
+                                    aria-label="Pagination">
+                                    <a th:href="@{/posts(page=${currentPage - 1})}" th:if="${currentPage > 0}"
+                                        class="relative inline-flex items-center rounded-xl bg-white px-3 py-2 text-slate-400 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 focus:z-20 focus:outline-offset-0 transition-all dark:bg-slate-900 dark:ring-slate-800 dark:hover:bg-slate-800">
+                                        <span class="material-symbols-outlined text-lg">chevron_left</span>
+                                    </a>
+
+                                    <div class="flex items-center gap-1">
+                                        <a th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}"
+                                            th:href="@{/posts(page=${pageNum})}" th:text="${pageNum + 1}"
+                                            th:classappend="${pageNum == currentPage} ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'bg-white text-slate-600 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:ring-slate-800 dark:text-slate-400 dark:hover:bg-slate-800'"
+                                            class="relative inline-flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold focus:z-20 focus:outline-offset-0 transition-all">
+                                            1
+                                        </a>
+                                    </div>
+
+                                    <a th:href="@{/posts(page=${currentPage + 1})}"
+                                        th:if="${currentPage < totalPages - 1}"
+                                        class="relative inline-flex items-center rounded-xl bg-white px-3 py-2 text-slate-400 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 focus:z-20 focus:outline-offset-0 transition-all dark:bg-slate-900 dark:ring-slate-800 dark:hover:bg-slate-800">
+                                        <span class="material-symbols-outlined text-lg">chevron_right</span>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

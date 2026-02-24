@@ -12,12 +12,31 @@ public class PostRepository {
     public PostRepository() {
         // Init sample data
         for (long i = 1; i <= 10; i++) {
-            posts.add(new Post(i, "Vibe Coding Post " + i, "This is the content for post " + i, LocalDateTime.now().minusDays(10 - i), (int) (Math.random() * 100)));
+            posts.add(new Post(i, "Vibe Coding Post " + i, "This is the content for post " + i,
+                    LocalDateTime.now().minusDays(10 - i), (int) (Math.random() * 100)));
         }
     }
 
     public List<Post> findAll() {
         return new ArrayList<>(posts);
+    }
+
+    public List<Post> findPage(int page, int size) {
+        int fromIndex = page * size;
+        if (fromIndex >= posts.size()) {
+            return new ArrayList<>();
+        }
+        int toIndex = Math.min(fromIndex + size, posts.size());
+
+        // Sort by 'no' descending to show latest posts first
+        List<Post> sortedPosts = new ArrayList<>(posts);
+        sortedPosts.sort((p1, p2) -> p2.getNo().compareTo(p1.getNo()));
+
+        return sortedPosts.subList(fromIndex, toIndex);
+    }
+
+    public long getTotalCount() {
+        return posts.size();
     }
 
     public void save(Post post) {
@@ -28,6 +47,13 @@ public class PostRepository {
                     .orElse(0L);
             post.setNo(maxNo + 1);
             posts.add(post);
+        } else {
+            Post existing = findByNo(post.getNo());
+            if (existing != null) {
+                existing.setTitle(post.getTitle());
+                existing.setContent(post.getContent());
+                existing.setUpdatedAt(LocalDateTime.now());
+            }
         }
     }
 
@@ -36,5 +62,9 @@ public class PostRepository {
                 .filter(post -> post.getNo().equals(no))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public void deleteByNo(Long no) {
+        posts.removeIf(post -> post.getNo().equals(no));
     }
 }

@@ -14,8 +14,19 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String list(Model model) {
-        model.addAttribute("posts", postService.getAllPosts());
+    public String list(
+            @org.springframework.web.bind.annotation.RequestParam(value = "page", defaultValue = "0") int page,
+            Model model) {
+        int size = 5;
+        model.addAttribute("posts", postService.getPostsPage(page, size));
+
+        long totalPosts = postService.getTotalPostsCount();
+        int totalPages = (int) Math.ceil((double) totalPosts / size);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalPosts", totalPosts);
+
         return "posts";
     }
 
@@ -38,6 +49,28 @@ public class PostController {
     @org.springframework.web.bind.annotation.PostMapping("/posts/add")
     public String add(String title, String content) {
         postService.createPost(title, content);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{no}/edit")
+    public String editForm(@PathVariable("no") Long no, Model model) {
+        Post post = postService.getPostByNo(no);
+        if (post != null) {
+            model.addAttribute("post", post);
+            return "post_edit_form";
+        }
+        return "redirect:/posts";
+    }
+
+    @org.springframework.web.bind.annotation.PostMapping("/posts/{no}/save")
+    public String update(@PathVariable("no") Long no, String title, String content) {
+        postService.updatePost(no, title, content);
+        return "redirect:/posts/" + no;
+    }
+
+    @GetMapping("/posts/{no}/delete")
+    public String delete(@PathVariable("no") Long no) {
+        postService.deletePost(no);
         return "redirect:/posts";
     }
 }
