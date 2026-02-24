@@ -1,14 +1,15 @@
-package com.example.vibeapp;
+package com.example.vibeapp.home;
 
+import com.example.vibeapp.post.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MainController {
+public class HomeController {
     private final PostService postService;
 
-    public MainController(PostService postService) {
+    public HomeController(PostService postService) {
         this.postService = postService;
     }
 
